@@ -1,0 +1,129 @@
+/* FileTransfer.css */
+
+.file-transfer-container {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: center;
+    height: 70vh;
+    background: linear-gradient(90.21deg, rgba(255, 255, 255, 0.5) -5.91%, rgba(103, 97, 115, 0.5) 111.58%);
+  flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  h1 {
+    margin-bottom: 40px;
+  }
+  
+  .file-icons-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  .file-icons-container img {
+    width: 80px;
+    height: 80px;
+    margin: 10px 120px;
+  }
+  
+  .select-file-type {
+    width: 50%;
+    max-width: 150px;
+    margin: 20px auto;
+    background: linear-gradient(
+      90.21deg,
+      rgba(85, 82, 82, 0.5) -5.91%,
+      rgba(11, 10, 11, 0.5) 111.58%
+    );
+    margin-bottom: 20px;
+    margin-right: 300px;
+    padding: 3px 10px;
+  }
+  
+  .file-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  
+  .transfer-button {
+    margin-top: 50px; /* Reduce the margin-top to adjust button position */
+    padding: 10px 20px;
+    background-color: #6c706c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .transfer-button:hover {
+    background-color: #000000;
+  }
+  
+  .transfer-button:disabled {
+    background-color: #ffebeb;
+    cursor: not-allowed;
+  }
+  
+  .progress-bar-container {
+    width: 60%;
+    height: 13px; 
+    margin: 0 auto;
+    background-color: #b9b9b9;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+  }
+  
+  .status-message {
+    margin-top: 10px;
+  }
+  
+  .analized-button{
+    margin-top: 70px;
+    position: relative;
+    padding-top: 10px;
+  }
+
+
+  .flash-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+
+  .flash-button {
+  
+    width: 100px;
+    margin-top: 20px;
+    padding: 10px 20px ;
+    background-color: #6c706c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: flashAnimation 1.65s infinite;
+  }
+  
+  .flash-button:hover {
+    background-color: #000000;
+  }
+
+  @keyframes flashAnimation {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }

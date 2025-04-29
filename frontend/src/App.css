@@ -1,0 +1,433 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+
+@media (min-width:1700px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+}
+
+nav.navbar {
+  background-color: #c4c2c2;
+  padding:15px 2px;
+  position: relative;
+   text-align: right; 
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  transition: 0.32s ease-in-out;
+  box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+nav.navbar.scrolled {
+  background-color: #000000;
+}
+
+nav.navbar .navbar-brand {
+  width: 8%;
+  padding: 10px 25px;
+
+  text-decoration: none;
+  position: absolute;
+  left: 2px;
+  top: -30px;
+}
+
+nav.navbar .navbar-nav {
+  
+  justify-content: flex-left;
+}
+
+nav.navbar .navbar-nav .nav-link.navbar-link {
+  font-weight: 500;
+  color: #000000 !important;
+  letter-spacing: 0.8px;
+  padding: 20px 25px;
+  font-size: 18px;
+  opacity: 0.75;
+  text-decoration: none;
+  position: relative;
+}
+
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+  opacity: 1;
+}
+
+span.navbar-text {
+  display: flex;
+  
+  align-items: center;
+}
+
+.navbar-text button {
+  font-weight: 800;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 18px 34px;
+  font-size: 19px;
+  margin-left: 18px;
+  position: relative;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-text button span {
+  z-index: 1;
+}
+
+.navbar-text button::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  background-color: #000000;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-text button:hover {
+  color: #000000;
+}
+
+.navbar-text button:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+nav.navbar .navbar-toggler:active,
+nav.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+nav.navbar .navbar-toggler-icon {
+  display: none;
+}
+
+
+.content-container {
+  border: 2px solid #817f7f; 
+  padding: 50px 10px; 
+  border-radius: 8px;
+  background: linear-gradient(90.21deg, rgba(255, 255, 255, 0.5) -5.91%, rgba(103, 97, 115, 0.5) 111.58%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.banner {
+  position: relative; /* Add relative positioning to create a reference for absolute positioning */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  overflow: visible;
+  background: linear-gradient(90.21deg, rgba(255, 255, 255, 0.5) -5.91%, rgba(103, 97, 115, 0.5) 111.58%);
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  padding: 20px;
+}
+
+.tagline {
+  position: relative;
+  z-index: 3;
+  letter-spacing: 0.8px;
+  padding: 8px 100px;
+  background: linear-gradient(90.21deg, rgba(196, 148, 148, 0.5) -5.91%, rgba(111, 75, 183, 0.5) 111.58%);
+  border: 1px solid rgba(6, 5, 5, 0.5);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  overflow: visible;
+}
+
+h1 {
+ position: relative;
+ z-index: 3;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #3a4143;
+}
+
+.wrap {
+  display: inline-block;
+}
+
+p {
+  position: relative;
+  z-index: 3;
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #1c1c1c;
+  color: #bfc3ca;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.button:hover {
+  background-color: #605252;
+}
+
+/* Animation */
+.animated__animated__fadeIn {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-container1 {
+  position: absolute; /* Position the image absolutely within the .ml-conta container */
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  opacity: 0.9; 
+
+}
+
+.image-container1 img {
+
+max-width: 70%;
+max-height: 70%;
+object-fit: cover;
+}
+
+.banner img {
+  animation: updown 3s linear infinite;
+}
+
+
+@keyframes updown {
+  0% {
+      transform: translateY(-20px);
+  }
+  50% {
+      transform: translateY(20px);
+  }
+  100% {
+      transform: translateY(-20px);
+  }
+}
+
+.banner button {
+  position: relative;
+  z-index: 2; /* Ensure the button is above the image */
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #555050; /* Add your desired background color */
+  border: none; /* Remove the border if you don't want it */
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+}
+
+.banner button svg {
+  vertical-align: middle;
+  margin-right: 10px; /* Adjust the spacing between the icon and the text */
+}
+
+.banner button:hover {
+  margin-left: 10px; /* Adjust the hover effect as needed */
+}
+
+.footer p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #B8B8B8;
+  letter-spacing: 0.5px;
+  margin-top: 75px;
+}
+
+
+/* Analysis */
+
+.fileupload-container {
+  background: linear-gradient(90.21deg, rgba(255, 255, 255, 0.5) -5.91%, rgba(103, 97, 115, 0.5) 111.58%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.fileupload-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 400px;
+  padding: 40px; */
+  border-radius: 10px;
+  color: white;
+}
+
+.fileupload-heading {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.droparea {
+  position: relative;
+  height: 212px;
+  width: 360px;
+  background: rgba(35, 34, 34, 0.2);
+  margin-bottom: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.droparea.bg-gray-200 {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+.fileinput-label {
+  cursor: pointer;
+  
+}
+
+.fileicon {
+  width: 80px;
+  height: 100px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fileupload-text {
+  color: #000000;
+  font-size: 25px;
+  position: absolute;
+  top: 0%;
+}
+
+.fileupload-button {
+  margin-top: 50px;
+  height: 40px;
+  width: 170px;
+  background: #000000;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+
+/* Add your CSS styles for the InstructionsPage component */
+
+.instructions-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.instructions-box {
+  max-width: 800px;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 80vh; /* Set the height of the box */
+  overflow-y: auto; /* Add scrollbar when content exceeds box height */
+}
+
+.instructions-box h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.instructions-box p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.instructions-box .instructions-list {
+  font-size: 14px;
+  margin-left: 20px;
+  justify-items: start;
+  padding: right 10px; 
+}
+
+.instructions-box .instructions-list li {
+  list-style: decimal;
+  margin-bottom: 10px;
+}
+
+.instructions-box a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.instructions-box a:hover {
+  text-decoration: underline;
+}
+
+

@@ -1,0 +1,127 @@
+/* about.css */
+.about-us-container {
+    padding: 5px;
+    text-align: center;
+    background: linear-gradient(
+      90.21deg,
+      rgba(255, 255, 255, 0.5) -5.91%,
+      rgba(103, 97, 115, 0.5) 111.58%
+    );
+  }
+  
+  .about-us-heading {
+    font-size: 36px;
+    margin-bottom: 90px;
+    color: #052850;
+  }
+  
+  .about-us-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-us-text {
+    font-size: 18px;
+    margin-bottom: 80px;
+    animation: fadeInUp 1s forwards;
+  }
+  
+  .about-us-text1,
+  .about-us-text2,
+  .about-us-text3 {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0;
+  }
+  
+  /* Define animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Add media query for responsiveness */
+  @media screen and (max-width: 480px) {
+    .about-us-heading {
+      font-size: 30px;
+    }
+  
+    .about-us-text,
+    .about-us-text1,
+    .about-us-text2,
+    .about-us-text3 {
+      font-size: 76px;
+    }
+  
+    /* Adjust image size for smaller screens */
+    .feat-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+
+ /* about.css */
+/* ... Your existing CSS code ... */
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .feat-card {
+    position: relative;
+    width: 780px; /* Increase width to 200px */
+    height: 170px; /* Increase height to 200px */
+    margin: 20px;
+    border-radius: 9px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInCard 0.8s forwards;
+  }
+  
+  .feat-image {
+    width: 100%; /* Keep the image at full width within the .feat-card */
+    height: 100%; /* Keep the image at full height within the .feat-card */
+    object-fit: cover;
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 90%;
+    height: 130px;
+    padding: 25px 10px ;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(255, 255, 255);
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .feat-card:hover .tooltip {
+    opacity: 1;
+  }
+  
+  /* Define animations */
+  @keyframes fadeInCard {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Add media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    /* ... Your existing responsive styles ... */
+  }

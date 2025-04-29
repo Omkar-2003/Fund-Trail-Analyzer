@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compiled Report</title>
+    <style>
+        /* Styles from the first HTML */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .report {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: url('../assets/img/coin1.png') center/30% no-repeat, linear-gradient(to right, #000000, #ffffff);
+            background-attachment: fixed;
+            min-height: calc(100vh - 80px);
+            /* top:10px; */
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 5vh;
+        }
+        .content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .tra1 {
+            position: relative;
+            z-index: 3;
+            letter-spacing: 0.8px;
+            padding: 8px 100px;
+            background: linear-gradient(90.21deg, rgba(196, 148, 148, 0.5) -5.91%, rgba(111, 75, 183, 0.5) 111.58%);
+            border: 1px solid rgba(6, 5, 5, 0.5);
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            overflow: visible;
+        }
+        /* Rest of the styles */
+        /* ... (styles from the second HTML) ... */
+        .wide-iframe {
+            width: 800px; /* Customize the width as needed */
+        }
+        .rep1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center the rep1 section horizontally */
+            margin-top: 20px; /* Add some margin to separate rep1 from tra1 */
+        }
+        .rep1 .container {
+            max-width: 1200px;
+        }
+
+        /* Add the container with a fixed size */
+        .fixed-container {
+            width: 1000px; /* Adjust the width as needed */
+            height: 470px; /* Adjust the height as needed */
+            margin: 0 auto;
+            background-color: #f2f2f2; /* Add a background color to the container */
+            padding: 20px;
+            overflow-y: auto; /* Enable vertical scrolling for the container */
+            position: absolute;
+            top: 100px; /* Adjust the top value as needed */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- First section from the first HTML -->
+        <section class="report" id="report">
+            <div class="container">
+                <div class="content">
+                    <span class="tra1">MONEY TRAIL</span>
+                    <h1>REPORT</h1>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Add the fixed container below tra1 -->
+    <div class="main-container">
+        <div class="fixed-container">
+            <section class="rep1">
+                <!-- Rest of the sections from the second HTML -->
+                <div class="container" style="border: #fff;">
+                    <!-- <h1>Report</h1> -->
+                    <!-- Highlight csv -->
+                    <div style="color:black;">
+                        <h2>Anomaly Detect</h2>
+                        <iframe src="../../public/assets/higlight.html" width="1000" height="400" title="Your anomaly in Data" class="wide-iframe"></iframe>
+                        <p>Your anomaly data will be displayed here.</p>
+                        <p>Scaned your data and highlights rows with anomalies,
+                            allowing you to easily identify potential fraudulent or suspicious transactions.
+                            By hovering over the highlighted rows, you can gain detailed insights into the specific anomaly category. </p>
+                        <br></br>
+                            <!-- <ul class="anomaly-list">
+                            <li>1: 🚩 Zero transaction</li>
+                            <li>2: 🚀 Mismatch balance</li>
+                            <li>3: ⭐ Redundant UTR</li>
+                            <li>4: 🌟 Missing UTR</li>
+                            <li>5: 💡 Transaction ID is Zero</li>
+                            <li>6: 🎈 Missing Date</li>
+                            <li>7: 🔶 Negative Balance</li>
+                            <li>8: 🎯 Suspicious Deposit</li>
+                        </ul> -->
+                        <br></br>
+                        <ul class="anomaly-list">
+                            <li>1: 🚩 Zero transaction: <br></br> Description: In the transaction the withdrawal and deposit is "Zero" but the rest of the detail is there, might mean that the complete entry of that transaction is falsifyed.</li>
+                            <li>2: 🚀 Mismatch balance:<br></br> Description : Opening and closing balance mismatch refers to a situation where the ending balance of one bank statement period (e.g., a month) does not align with the starting balance of the following period. In a well-maintained accounting system, the closing balance of a specific period should be equal to the opening balance of the subsequent period. However, when there is a discrepancy between these two figures, it indicates an error or inconsistency in the recorded transactions.                            </li>
+                            <li>3: ⭐ Redundant UTR:<br></br> Description : The UTR is a unique identifier assigned to each financial transaction to ensure its traceability and avoid duplication. Redundant UTR occurs when a specific UTR, which is meant to be unique for every transaction, appears multiple times in the bank statement or accounting system. Each financial transaction should have its own distinct UTR to prevent confusion and facilitate accurate tracking of money transfers.</li>
+                            <li>4: 🌟 Missing UTR:<br></br> Description : "Missing UTR" refers to a situation where a financial transaction or payment is processed without a Unique Transaction Reference (UTR) being provided or recorded for that specific transaction. In the normal course of processing financial transactions, each transaction is typically associated with a unique UTR to facilitate tracking, reconciliation, and verification of payments. However, in some cases, a transaction might be processed or recorded without a UTR being generated or provided, either due to errors in the system, technical issues, or other operational reasons.</li>
+                            <li>5: 💡 Transaction ID is Zero:<br></br> Description : In the process of settling ATM transactions, it is essential to have a UTR associated with each transaction for proper tracking and reconciliation. However, in some cases, an ATM settlement might be processed without a UTR being generated or provided for that transaction. This could occur due to errors in the settlement system, technical glitches, or other operational issues.</li>
+                            <li>6: 🎈 Missing Date:<br></br> Description : "Missing date" refers to a situation where a financial transaction or entry is recorded without the corresponding date when the transaction occurred. In financial records and bank statements, the date of each transaction is crucial for accurate tracking, reconciliation, and financial analysis.
+                                In the normal course of recording financial transactions, it is essential to include the date when each transaction took place. However, in some cases, a transaction might be processed or recorded without the date being provided, either due to errors in the system, data entry mistakes, or other operational reasons.</li>
+                            <li>7: 🔶 Negative Balance:<br></br> Description : Negative balances in the context of bank statements or financial accounts refer to situations where the account holder owes more money than they have available. This occurs when the total debits (withdrawals and expenses) in the account exceed the total credits (deposits and income). Negative balances can have various causes and implications.Typically results from overdrawing the account, which can happen when the account holder spends more money than they have or when transactions are not yet reflected in the account balance.</li>
+                            <li>8: 🎯 Suspicious Deposit:<br></br> Description : Suspicious cash deposits of huge amounts often involve depositing large sums of cash, typically in excess of what would be considered normal for the account holder or the type of business they operate. These deposits may be made in a single transaction or in multiple transactions over a short period. The deposits may occur at irregular intervals or may lack an apparent business or personal purpose.</li>
+                    </div>
+                    <br></br>
+                    <!-- Rest of the sections from the second HTML -->
+                    <div style="color:black;">
+                        <h2>Your anomaly in Data</h2>
+                        <iframe src="../../public/assets/pie.html" width="500" height="400" title="Your anomaly in Data"></iframe>
+                        <p>Your anomaly data will be displayed here.</p>
+                        <p>The pie chart exhibits the distribution of anomaly transactions, 
+                            categorized under various segments. Normal transactions form the largest portion, 
+                            adhering to the expected pattern. However, anomalies are dispersed across distinct categories,
+                            each representing specific deviations from the norm. Analyzing these categorized outliers is paramount,
+                            as they can significantly influence transaction analysis and modeling outcomes. </p>
+                    </div>
+                    <br></br>
+                    <div style="color:black;">
+                        <h2>Anomaly distribution</h2>
+                        <iframe src="../../public/assets/pie2.html" width="500" height="400" title="Anomaly distribution"></iframe>
+                        <p>Your anomaly data will be displayed here.</p>
+                        <p>The pie chart exhibits the distribution of anomaly transactions, 
+                            categorized under various segments. Anomalies are dispersed across distinct categories,
+                            each representing specific deviations from the norm. Largest count of the Anomaly form the largest portion, 
+                            adhering to the expected pattern. Analyzing these categorized outliers is paramount,
+                            as they can significantly influence transaction analysis and modeling outcomes.</p>
+                    </div>
+                    <br></br>
+                    <div style="color:black;">
+                        <h2>Balance Chart</h2>
+                        <iframe src="../../public/assets/scatter_plot.html" width="800" height="600" title="Balance Chart"></iframe>
+                        <p>As you observe the scatter plot from left to right, a visual trail is formed,
+                            illustrating the account's transaction history and how it impacts the balance over time.
+                            The path created by the plotted points depicts the fluctuations in the account balance as transactions occur.</p>
+                    </div>
+                    <br></br>
+                    <div style="color:black;">
+                        <h2>Anomaly Chart</h2>
+                        <iframe src="../../public/assets/line_plot.html" width="800" height="600" title="Anomaly Chart"></iframe>
+                        <p>Your anomaly chart will be displayed here.</p>
+                        <p>As you observe the scatter plot from left to right, a visual trail is formed,
+                            illustrating the account's transaction history and how anomaly took place over time.
+                            The path created by the plotted points depicts the anomaly transactions occur.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Footer remains outside the fixed container -->
+    <footer style="position: absolute; left:40%; bottom:5%">
+        © 2023 @Money Trail Copyright 2023. All Rights Reserved
+    </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataframe Row Highlighting</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- Add character encoding -->
+    <style>
+        /* Add any custom styling here */
+        /* For example, you can define CSS classes for highlighting rows */
+        .highlighted-row td:not(:last-child) {
+            background-color: red;
+        }
+
+        /* Add CSS for the flag icon */
+        .flag-icon {
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 2px;
+            margin-right: 5px;
+            position: relative;
+        }
+
+        /* Apply different colors for different icons */
+        .flag-icon.flag-1 { background-color: #ff0000; color: #fff; }
+        .flag-icon.flag-2 { background-color: #00ff00; color: #000; }
+        .flag-icon.flag-3 { background-color: #0000ff; color: #fff; }
+        .flag-icon.flag-4 { background-color: #ffff00; color: #000; }
+        .flag-icon.flag-5 { background-color: #ff00ff; color: #fff; }
+        .flag-icon.flag-6 { background-color: #00ffff; color: #000; }
+        .flag-icon.flag-7 { background-color: #ffa500; color: #000; }
+        .flag-icon.flag-8 { background-color: #800080; color: #fff; }
+    </style>
+    </head>
+    <body>
+    <!-- Add a placeholder for the data visualization -->
+    <div id="data-viz"></div>
+
+    <!-- Include your custom JavaScript code for the visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // Load the data from the Python variable
+        const data = [{"Serial No":1,"DATE":1420070400000,"TRANSACTION DETAILS":"TRF FROM Indiaforensic SERVICES","CHQ.NO.\/ Ref No.":28494924977,"VALUE DATE":"01 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":1000000.0,"BALANCE AMT":1000000.0,"Label":null,"Flag":""},{"Serial No":2,"DATE":1420070400000,"TRANSACTION DETAILS":"TRF FROM Indiaforensic SERVICES","CHQ.NO.\/ Ref No.":28494879059,"VALUE DATE":"01 - Jan - 151","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":1000000.0,"BALANCE AMT":1999999.0,"Label":"2","Flag":"\ud83d\ude80"},{"Serial No":3,"DATE":1420070400000,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494955546,"VALUE DATE":"01 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":2499999.0,"Label":null,"Flag":""},{"Serial No":4,"DATE":1420156800000,"TRANSACTION DETAILS":"TRF FRM Indiaforensic SERVICES","CHQ.NO.\/ Ref No.":28494890801,"VALUE DATE":"02 - Jan - 15 ","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":3000000.0,"BALANCE AMT":5499999.0,"Label":null,"Flag":""},{"Serial No":5,"DATE":null,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494863821,"VALUE DATE":null,"WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":5999999.0,"Label":6,"Flag":""},{"Serial No":6,"DATE":1420156800000,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494885357,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":6499999.0,"Label":null,"Flag":""},{"Serial No":7,"DATE":1420156800000,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494925698,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":6999999.0,"Label":null,"Flag":""},{"Serial No":8,"DATE":1420156800000,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494949082,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":7499999.0,"Label":null,"Flag":""},{"Serial No":9,"DATE":1420156800000,"TRANSACTION DETAILS":"FDRL \/ INTERNAL FUND TRANSFER","CHQ.NO.\/ Ref No.":28494879547,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":500000.0,"BALANCE AMT":7999999.0,"Label":null,"Flag":""},{"Serial No":10,"DATE":1420156800000,"TRANSACTION DETAILS":null,"CHQ.NO.\/ Ref No.":28494945225,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":50000000.0,"BALANCE AMT":8499999.0,"Label":"2","Flag":"\ud83d\ude80"},{"Serial No":11,"DATE":1420156800000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL01071","CHQ.NO.\/ Ref No.":28494965624,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":133900.0,"DEPOSIT AMT":0.0,"BALANCE AMT":8366099.0,"Label":null,"Flag":""},{"Serial No":12,"DATE":null,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL02071","CHQ.NO.\/ Ref No.":28494897004,"VALUE DATE":null,"WITHDRAWAL AMT":1800000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":6566099.0,"Label":6,"Flag":""},{"Serial No":13,"DATE":1420156800000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL03071","CHQ.NO.\/ Ref No.":28494947159,"VALUE DATE":"02 - Jan - 15","WITHDRAWAL AMT":5000000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":1566099.0,"Label":null,"Flag":""},{"Serial No":14,"DATE":1420243200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL04071","CHQ.NO.\/ Ref No.":28494911751,"VALUE DATE":"03 - Jan - 15","WITHDRAWAL AMT":195800.0,"DEPOSIT AMT":0.0,"BALANCE AMT":1370299.0,"Label":"3","Flag":"\u2b50"},{"Serial No":15,"DATE":1420243200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL05071","CHQ.NO.\/ Ref No.":28494918743,"VALUE DATE":"03 - Jan - 15 ","WITHDRAWAL AMT":81600.0,"DEPOSIT AMT":0.0,"BALANCE AMT":1288699.0,"Label":null,"Flag":""},{"Serial No":16,"DATE":1420243200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL06071","CHQ.NO.\/ Ref No.":28494918300,"VALUE DATE":"03 - Jan - 15","WITHDRAWAL AMT":41.0,"DEPOSIT AMT":0.0,"BALANCE AMT":12.0,"Label":"2","Flag":"\ud83d\ude80"},{"Serial No":17,"DATE":1420243200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL07071","CHQ.NO.\/ Ref No.":28494876586,"VALUE DATE":"03 - Jan - 15","WITHDRAWAL AMT":9850000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":-8603101.0,"Label":7,"Flag":""},{"Serial No":18,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL10071","CHQ.NO.\/ Ref No.":28494960197,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":0.0,"DEPOSIT AMT":98487384.0,"BALANCE AMT":89884283.0,"Label":null,"Flag":""},{"Serial No":19,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL11071","CHQ.NO.\/ Ref No.":28494867308,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":3.0,"DEPOSIT AMT":0.0,"BALANCE AMT":89552633.0,"Label":"2","Flag":"\ud83d\ude80"},{"Serial No":20,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL12071","CHQ.NO.\/ Ref No.":28494877713,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":129000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":89423633.0,"Label":null,"Flag":""},{"Serial No":21,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL13071","CHQ.NO.\/ Ref No.":28494930171,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":230013.0,"DEPOSIT AMT":0.0,"BALANCE AMT":89193620.0,"Label":null,"Flag":""},{"Serial No":22,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL14071","CHQ.NO.\/ Ref No.":28494927118,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":367900.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88825720.0,"Label":null,"Flag":""},{"Serial No":23,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL15071","CHQ.NO.\/ Ref No.":28494973661,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":108000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88717720.0,"Label":null,"Flag":""},{"Serial No":24,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL16071","CHQ.NO.\/ Ref No.":28494912451,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":64800.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88652920.0,"Label":null,"Flag":""},{"Serial No":25,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL17071","CHQ.NO.\/ Ref No.":28494880266,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":141000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88511920.0,"Label":null,"Flag":""},{"Serial No":26,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL18071","CHQ.NO.\/ Ref No.":28494880897,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":61750.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88450170.0,"Label":null,"Flag":""},{"Serial No":27,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL19071","CHQ.NO.\/ Ref No.":28494901044,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":67920.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88382250.0,"Label":null,"Flag":""},{"Serial No":28,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL20071","CHQ.NO.\/ Ref No.":28494965834,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":78100.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88304150.0,"Label":null,"Flag":""},{"Serial No":29,"DATE":1420416000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL21071","CHQ.NO.\/ Ref No.":28494888819,"VALUE DATE":"05 - Jan - 15","WITHDRAWAL AMT":35650.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88268500.0,"Label":null,"Flag":""},{"Serial No":30,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL22071","CHQ.NO.\/ Ref No.":28494893861,"VALUE DATE":"06 - Jan - 15","WITHDRAWAL AMT":206000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88062500.0,"Label":null,"Flag":""},{"Serial No":31,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL24071","CHQ.NO.\/ Ref No.":28494911990,"VALUE DATE":"06 - Jan - 15","WITHDRAWAL AMT":35300.0,"DEPOSIT AMT":0.0,"BALANCE AMT":88027200.0,"Label":null,"Flag":""},{"Serial No":32,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL25071","CHQ.NO.\/ Ref No.":28494911751,"VALUE DATE":"06 - Jan - 15 ","WITHDRAWAL AMT":49800.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87977380.0,"Label":"2|3","Flag":""},{"Serial No":33,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL26071","CHQ.NO.\/ Ref No.":28494973384,"VALUE DATE":"06 - Jan - 15","WITHDRAWAL AMT":53000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87924380.0,"Label":null,"Flag":""},{"Serial No":34,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL27071","CHQ.NO.\/ Ref No.":28494884340,"VALUE DATE":"06 - Jan - 15","WITHDRAWAL AMT":91300.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87833080.0,"Label":null,"Flag":""},{"Serial No":35,"DATE":1420502400000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL28071","CHQ.NO.\/ Ref No.":28494942065,"VALUE DATE":"06 - Jan - 15 ","WITHDRAWAL AMT":57499.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87775581.0,"Label":null,"Flag":""},{"Serial No":36,"DATE":1420588800000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL30071","CHQ.NO.\/ Ref No.":28494894067,"VALUE DATE":"07 - Jan - 15","WITHDRAWAL AMT":20000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87755571.0,"Label":"2","Flag":"\ud83d\ude80"},{"Serial No":37,"DATE":null,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL31071","CHQ.NO.\/ Ref No.":28494949297,"VALUE DATE":null,"WITHDRAWAL AMT":19400.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87736171.0,"Label":6,"Flag":""},{"Serial No":38,"DATE":1420588800000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL01081","CHQ.NO.\/ Ref No.":28494884546,"VALUE DATE":"07 - Jan - 15","WITHDRAWAL AMT":40500.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87695671.0,"Label":null,"Flag":""},{"Serial No":39,"DATE":1420588800000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL02081","CHQ.NO.\/ Ref No.":28494918410,"VALUE DATE":"07 - Jan - 15","WITHDRAWAL AMT":242300.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87453371.0,"Label":null,"Flag":""},{"Serial No":40,"DATE":1420675200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL03081","CHQ.NO.\/ Ref No.":28494920133,"VALUE DATE":"08 - Jan - 15","WITHDRAWAL AMT":90100.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87363271.0,"Label":null,"Flag":""},{"Serial No":41,"DATE":1420675200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL04081","CHQ.NO.\/ Ref No.":28494880910,"VALUE DATE":"08 - Jan - 15","WITHDRAWAL AMT":113250.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87250021.0,"Label":null,"Flag":""},{"Serial No":42,"DATE":1420675200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL05081","CHQ.NO.\/ Ref No.":28494883166,"VALUE DATE":"08 - Jan - 15","WITHDRAWAL AMT":12500.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87237521.0,"Label":null,"Flag":""},{"Serial No":43,"DATE":1420675200000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL06081","CHQ.NO.\/ Ref No.":28494943114,"VALUE DATE":"08 - Jan - 15 ,","WITHDRAWAL AMT":40000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":87197521.0,"Label":null,"Flag":""},{"Serial No":44,"DATE":1420761600000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL07081","CHQ.NO.\/ Ref No.":28494895264,"VALUE DATE":"09 - Jan - 15","WITHDRAWAL AMT":206900.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86990621.0,"Label":null,"Flag":""},{"Serial No":45,"DATE":1420761600000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL08081","CHQ.NO.\/ Ref No.":28494916859,"VALUE DATE":"09 - Jan - 15","WITHDRAWAL AMT":276000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86714621.0,"Label":null,"Flag":""},{"Serial No":46,"DATE":1420761600000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL09081","CHQ.NO.\/ Ref No.":28494926549,"VALUE DATE":"09 - Jan - 15","WITHDRAWAL AMT":171000.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86543621.0,"Label":null,"Flag":""},{"Serial No":47,"DATE":1420761600000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL10081","CHQ.NO.\/ Ref No.":28494943592,"VALUE DATE":"09 - Jan - 15","WITHDRAWAL AMT":40100.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86503521.0,"Label":null,"Flag":""},{"Serial No":48,"DATE":1420848000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL11081","CHQ.NO.\/ Ref No.":28494927668,"VALUE DATE":"10 - Jan - 15","WITHDRAWAL AMT":189800.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86313721.0,"Label":null,"Flag":""},{"Serial No":49,"DATE":1420848000000,"TRANSACTION DETAILS":"INDO GIBL Indiaforensic STL12081","CHQ.NO.\/ Ref No.":28494929541,"VALUE DATE":"10 - Jan - 15","WITHDRAWAL AMT":55800.0,"DEPOSIT AMT":0.0,"BALANCE AMT":86257921.0,"Label":null,"Flag":""}];
+
+        // Define a mapping of number to icon and color
+        const number_to_icon = {"1": {"icon": "\ud83d\udea9", "color": "#ff0000", "tooltip": "Zero transaction"}, "2": {"icon": "\ud83d\ude80", "color": "#00ff00", "tooltip": "Mismatch balance"}, "3": {"icon": "\u2b50", "color": "#0000ff", "tooltip": "Redundant utr"}, "4": {"icon": "\ud83c\udf1f", "color": "#ffff00", "tooltip": "missing utr"}, "5": {"icon": "\ud83d\udca1", "color": "#ff00ff", "tooltip": "Transaction id 0"}, "6": {"icon": "\ud83c\udf88", "color": "#00ffff", "tooltip": "missing date"}, "7": {"icon": "\ud83d\udd36", "color": "#ffa500", "tooltip": "Negative balance"}, "8": {"icon": "\ud83c\udfaf", "color": "#800080", "tooltip": "suspicious Deposit"}};
+
+        // Function to create the data visualization
+        function createDataVisualization(data) {
+            const container = document.getElementById("data-viz");
+
+            // Create a table element
+            const table = document.createElement("table");
+
+            // Create table header
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+            const headerLabels = ["Serial No", "DATE", "TRANSACTION DETAILS", "CHQ.NO./ Ref No.", "VALUE DATE", "WITHDRAWAL AMT", "DEPOSIT AMT", "BALANCE AMT", "Label", "Flag"];
+            headerLabels.forEach(label => {
+                const th = document.createElement("th");
+                th.textContent = label;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement("tbody");
+
+            // Bind data to table rows
+            data.forEach(rowData => {
+                const row = document.createElement("tr");
+
+                // Add other columns
+                headerLabels.forEach(key => {
+                    const cell = document.createElement("td");
+                    if (key === 'Label') {
+                        const labelValue = rowData[key];
+                        cell.textContent = labelValue;
+                    } else if (key === 'Flag') {
+                        const flagIconData = number_to_icon.hasOwnProperty(rowData['Label']) ? number_to_icon[rowData['Label']] : null;
+                        if (flagIconData) {
+                            const flagIcon = document.createElement("span");
+                            flagIcon.className = "flag-icon";
+                            flagIcon.textContent = flagIconData['icon'];
+                            flagIcon.setAttribute("title", flagIconData['tooltip']);  // Set the tooltip using the 'title' attribute
+                            flagIcon.style.backgroundColor = flagIconData['color'];
+                            cell.appendChild(flagIcon);
+                        }
+                    } else {
+                        cell.textContent = rowData[key];
+                    }
+                    row.appendChild(cell);
+                });
+
+                // Apply styling to rows based on condition (Label > 0)
+                const labelValue = rowData['Label'];
+                if (labelValue > 0) {
+                    row.classList.add("highlighted-row");
+                }
+
+                // Add the row to the table body
+                tbody.appendChild(row);
+            });
+
+            // Add the table body to the table
+            table.appendChild(tbody);
+
+            // Add the table to the container
+            container.appendChild(table);
+        }
+
+        // Call the function with the provided data
+        createDataVisualization(data);
+    </script>
+    </body>
+    </html>
+    
