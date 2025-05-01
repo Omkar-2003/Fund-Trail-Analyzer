@@ -13,7 +13,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb+srv://austiekbly:tension123@cluster0.xz30ycn.mongodb.net/Kavach")
+client = MongoClient("")
 db = client["Kavach"]
 # collection_name = "formats_to_csv"
 collection = db["formats_to_csv"]
